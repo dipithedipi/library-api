@@ -13,7 +13,7 @@ const path = require('path');
 
 const app = express()
 app.use(express.json());
-app.use(express.static("ui"));
+app.use(express.static("./ui/src/"));
 
 const db = createDbConnection()
 if (db) {
@@ -186,7 +186,7 @@ app.delete('/book/:id', async (req, res) => {
 // default URL for website
 app.use('/', function(req,res){
     if (req.url === '/') {
-        res.sendFile(path.join(__dirname+'/ui/index.html'));
+        res.sendFile(path.join(__dirname+'/ui/src/index.html'));
     }
 });
 
