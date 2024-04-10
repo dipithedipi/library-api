@@ -1,3 +1,5 @@
+"use strict";
+
 function fetchBooks() {
     return new Promise((resolve, reject) => {
         // Creazione di un nuovo oggetto XMLHttpRequest
@@ -76,10 +78,7 @@ function createCard(book) {
                     <p>Publisher: ${publisher}</p>
                     <p>Price: ${book.price} $</p>
                     <div class="flex">
-                        <div class="card-actions pr-2">
-                            <button class="btn btn-primary onclick="editBook(${book.id})">Edit</button>
-                        </div>
-                        <div class="card-actions pl-2">
+                        <div class="card-actions">
                             <button class="btn btn-primary" onclick="deleteBook(${book.id})">Delete</button>
                         </div>
                     </div>
@@ -109,40 +108,44 @@ function deleteBook(id) {
     });
 }
 
-function editBook(id) {
-    // request book info
-
-    document.getElementById('title-input').value;
-    document.getElementById('price-input').value;
-    document.getElementById('authors-input').value;
-    document.getElementById('publisher-input').value;
-
-    const title = document.getElementById('title-input').value;
-    const price = document.getElementById('price-input').value;
-    const authors = document.getElementById('authors-input').value;
-    const publisher = document.getElementById('publisher-input').value;
+function addBookHandle() {
+    const my_modal_1 = document.getElementById('my_modal_1')
+    my_modal_1.showModal()
+    document.getElementById('btn-save').addEventListener('click', addBook);
 }
 
 function addBook() {
+    console.log('addBook');
+    // get input values
     const title = document.getElementById('title-input').value;
     const price = document.getElementById('price-input').value;
     const authors = document.getElementById('authors-input').value;
     const publisher = document.getElementById('publisher-input').value;
 
-    // check if are empty
+    // check if they are empty
     if (!title || !price || !authors || !publisher) {
         alert("Please enter all field")
         return
     }
 
-    // send request
+    // send request 
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', `http://127.0.0.1:3000/book`, true);
+        xhr.setRequestHeader('Content-Type', 'application/json'); // Set the content type header
         xhr.onload = function() {
             if (xhr.status >= 200 && xhr.status < 400) {
                 resolve();
+
+                //reload cards
                 loadBooksCard();
+                alert('Book added');
+                
+                // clear input fields
+                document.getElementById('title-input').value = '';
+                document.getElementById('price-input').value = '';
+                document.getElementById('authors-input').value = '';
+                document.getElementById('publisher-input').value = '';
             } else {
                 reject('Errore durante la richiesta: ' + xhr.status);
             }
@@ -150,7 +153,13 @@ function addBook() {
         xhr.onerror = function() {
             reject('Si è verificato un errore di rete');
         };
-        xhr.send();
+        // body parameters
+        xhr.send(JSON.stringify({
+            title: title,
+            price: price,
+            authors: authors.split(',') || [],
+            publisher: publisher
+        }));
     });
 }
 
