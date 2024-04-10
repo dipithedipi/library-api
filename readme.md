@@ -47,3 +47,4 @@ These instructions will get you a copy of the project up and running on your loc
 
 - [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) - For making HTTP requests.
 - [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) - For handling asynchronous operations.
+- [Tailwind](https://tailwindcss.com/) - For the css.
