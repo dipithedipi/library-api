@@ -33,7 +33,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Running the Application
 
-1. Open the page in your preferred browser (`http://127.0.0.1:3000/`).
+1. Open the page in chrome browser (`http://127.0.0.1:3000/`).
 2. Refresh the page if you have edited the graphic.
 3. Use the library.
 
