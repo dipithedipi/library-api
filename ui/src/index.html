@@ -19,7 +19,7 @@
                 <div id="cards-container" hidden="true">
                     <div class="divider"></div>
                     <div class="pb-4">
-                        <button class="btn btn-active w-full">Add new book</button>
+                        <button class="btn btn-active w-full" onclick="my_modal_1.showModal()">Add new book</button>
                     </div>
                     <div class="grid grid-cols-3 gap-4" id="cards-collector">
                         <!-- <div class="card w-80 bg-base-100 shadow-xl">
@@ -58,6 +58,7 @@
                                         <input type="text" class="input input-bordered" placeholder="Price" id="price-input">
                                     </div>
                                     <div class="pt-2">
+                                        <button class="btn" id="btn-save">Save</button>
                                         <button class="btn">Close</button>
                                     </div>
                                 </form>

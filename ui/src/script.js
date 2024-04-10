@@ -110,6 +110,13 @@ function deleteBook(id) {
 }
 
 function editBook(id) {
+    // request book info
+
+    document.getElementById('title-input').value;
+    document.getElementById('price-input').value;
+    document.getElementById('authors-input').value;
+    document.getElementById('publisher-input').value;
+
     const title = document.getElementById('title-input').value;
     const price = document.getElementById('price-input').value;
     const authors = document.getElementById('authors-input').value;
@@ -121,6 +128,30 @@ function addBook() {
     const price = document.getElementById('price-input').value;
     const authors = document.getElementById('authors-input').value;
     const publisher = document.getElementById('publisher-input').value;
+
+    // check if are empty
+    if (!title || !price || !authors || !publisher) {
+        alert("Please enter all field")
+        return
+    }
+
+    // send request
+    return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', `http://127.0.0.1:3000/book`, true);
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                resolve();
+                loadBooksCard();
+            } else {
+                reject('Errore durante la richiesta: ' + xhr.status);
+            }
+        };
+        xhr.onerror = function() {
+            reject('Si è verificato un errore di rete');
+        };
+        xhr.send();
+    });
 }
 
 function addCardsToCollector(books) {
