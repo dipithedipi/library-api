@@ -32,10 +32,10 @@ These instructions will get you a copy of the project up and running on your loc
 3. Change the `index.html` as you want.
 
 ### Running the Application
-
-1. Open the page in chrome browser (`http://127.0.0.1:3000/`).
-2. Refresh the page if you have edited the graphic.
-3. Use the library.
+1. Run the app `node main.js`
+2. Open the page in chrome browser (`http://127.0.0.1:3000/`).
+3. Refresh the page if you have edited the graphic.
+4. Use the library.
 
 ## Usage
 
