@@ -38,6 +38,7 @@
     "concat-map": "^0.0.1",
     "console-control-strings": "^1.1.0",
     "content-type": "^1.0.5",
+    "cors": "^2.8.5",
     "cross-spawn": "^7.0.3",
     "css-selector-tokenizer": "^0.8.0",
     "cssesc": "^3.0.0",

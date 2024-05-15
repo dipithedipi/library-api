@@ -16,9 +16,13 @@ const http = require('http');
 const bodyParser = require('body-parser');
 // Imports the path module for handling file and directory paths.
 const path = require('path');
+// Import the cors module for enabling CORS in requests.
+var cors = require('cors')
 
 // Creates an express application.
 const app = express()
+// Enable CORS for all requests.
+app.use(cors())
 // Middleware to parse JSON bodies.
 app.use(express.json());
 // Middleware to serve static files from the "./ui/src/" directory.
